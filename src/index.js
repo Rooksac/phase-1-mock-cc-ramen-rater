@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     getRamen()
-    form.addEventListener('submit', makeNewRamen)
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        makeNewRamen()})
+
 })
+
 
 const ramenMenu = document.getElementById(`ramen-menu`)
 const ramenDetail = document.getElementById("ramen-detail")
@@ -34,13 +38,13 @@ function renderRamen(ramen) {
     })
     ramenMenu.append(img)   
 }
-function makeNewRamen(newRamen) {
-    let newramen = {
-        'name':`${newName.value}`,
-        'image': `${newImage.value}`,
-        'comment': `${newComment.value}`,
-        'rating': `${newRating.value}`,
-        'restaurant': `${newRestaraunt.value}`
+function makeNewRamen() {
+    let newRamenObj = {
+        name:`${newName.value}`,
+        image: `${newImage.value}`,
+        comment: `${newComment.value}`,
+        rating: `${newRating.value}`,
+        restaurant: `${newRestaraunt.value}`
     }
-    renderRamen(newRamen);
+    renderRamen(newRamenObj);
 }
